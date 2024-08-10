@@ -1,7 +1,7 @@
 # MandelbrotPyC
 Para executar o arquivo C:
 
-gcc mandelbrot.c -o mandelbrot -lm
+`gcc mandelbrot.c -o mandelbrot -lm`
 
 Para alterar o zoom da função, alterar as seguintes variáveis no inicializa()
 ```
