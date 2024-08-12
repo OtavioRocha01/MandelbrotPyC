@@ -8,7 +8,7 @@ import os
 TAM_GRID = 500
 
 # Carregando a biblioteca
-# PATH = 'D:\\mys64\\ucrt64\\bin\\mandelbrot.so'
+#PATH = 'D:\\mys64\\ucrt64\\bin\\mandelbrot.so'
 PATH = os.path.abspath("mandelbrot.so")
 mandelbrot_lib = ctypes.CDLL(PATH)
 
