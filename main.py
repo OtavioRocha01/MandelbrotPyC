@@ -1,15 +1,28 @@
+import ctypes
 import tkinter as tk
 from tkinter import Canvas, PhotoImage
 import numpy as np
+import os
 
 
 TAM_GRID = 500
 
+# Carregando a biblioteca
+# PATH = 'D:\\mys64\\ucrt64\\bin\\mandelbrot.so'
+PATH = os.path.abspath("mandelbrot.so")
+mandelbrot_lib = ctypes.CDLL(PATH)
 
-def ler_contador(filename):
-    data = np.fromfile(filename, dtype=np.float32)
-    data = data.reshape((TAM_GRID, TAM_GRID))
-    return data
+class MANDELBROT(ctypes.Structure):
+    _fields_ = [("x_ini", ctypes.c_double),
+                ("y_ini", ctypes.c_double),
+                ("passo", ctypes.c_double),
+                ("incr", ctypes.c_double),
+                ("contador", ctypes.c_int * TAM_GRID * TAM_GRID), 
+                ("menor", ctypes.c_int),
+                ("maior", ctypes.c_int),
+                ("cor", ctypes.c_int),
+                ("coord", ctypes.c_int),
+                ]
 
 
 def exibir_fractal(canvas, img, contador):
@@ -24,8 +37,6 @@ def exibir_fractal(canvas, img, contador):
 
 
 def main():
-    contador = ler_contador("mandelbrot.bin")
-    
     root = tk.Tk()
     root.title("Fractal de Mandelbrot")
 
@@ -33,7 +44,17 @@ def main():
     canvas.pack()
     img = PhotoImage(width=TAM_GRID, height=TAM_GRID)
 
-    exibir_fractal(canvas, img, contador)
+    # Definindo os tipos de retorno e argumentos das funções
+    mandelbrot_lib.inicializa.restype = ctypes.POINTER(MANDELBROT)
+    mandelbrot_lib.calcula.restype = ctypes.POINTER(MANDELBROT)
+    
+    M = mandelbrot_lib.inicializa()
+
+    mandelbrot_lib.calcula(M)
+
+    data = np.ctypeslib.as_array(M.contents.contador).reshape((TAM_GRID, TAM_GRID))
+
+    exibir_fractal(canvas, img, data)
 
     root.mainloop()
 

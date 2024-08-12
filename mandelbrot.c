@@ -19,28 +19,14 @@ typedef struct mandelbrot_set{
     int cor, coord;
 }MANDELBROT;
 
-MANDELBROT* inicializa();
-void calcula(MANDELBROT* M);
-void salva_contador(MANDELBROT* M, const char* filename);
-
-int main() {
-    MANDELBROT* M = inicializa();
-    if ( M != NULL ) {
-        calcula(M);
-        salva_contador(M, "mandelbrot.bin");
-        free(M);
-    }
-    return 0;
-}
-
 MANDELBROT* inicializa() {
     MANDELBROT* M = (MANDELBROT*) malloc(sizeof(MANDELBROT));
     if ( M != NULL ) {
         M->cor = 0;
         M->coord = 1;
-        M->x_ini = -0.3787675;
-        M->y_ini = +0.6212361;
-        M->passo = 5e-7;
+        M->x_ini = -2;
+        M->y_ini = +2;
+        M->passo = 4;
         M->incr = M->passo / TAM_GRID;
     }
 
@@ -74,13 +60,5 @@ void calcula(MANDELBROT* M) {
             if ( M->contador[y][x] < M->menor ) {M->menor = M->contador[y][x];}
             if ( M->contador[y][x] > M->maior ) {M->maior = M->contador[y][x];}
         }
-    }
-}
-
-void salva_contador(MANDELBROT* M, const char* filename) {
-    FILE *file = fopen(filename, "wb");
-    if (file != NULL) {
-        fwrite(M->contador, sizeof(int), TAM_GRID * TAM_GRID, file);
-        fclose(file);
     }
 }
