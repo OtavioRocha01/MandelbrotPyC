@@ -16,7 +16,7 @@ PYTHON_SCRIPT=main.py
 
 # Compilador e flags
 CC=gcc
-CFLAGS=-fPIC -shared -o -lm
+CFLAGS=-std=c99 -fPIC -shared -o -lm
 
 # Alvo padrão
 all: build run

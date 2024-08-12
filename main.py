@@ -4,13 +4,15 @@ from tkinter import Canvas, PhotoImage
 import numpy as np
 import os
 
-
 TAM_GRID = 500
 
 # Carregando a biblioteca
-#PATH = 'D:\\mys64\\ucrt64\\bin\\mandelbrot.so'
-PATH = os.path.abspath("mandelbrot.so")
-mandelbrot_lib = ctypes.CDLL(PATH)
+# Testa o sistema operacional para o uso da flag
+PATH = './mandelbrot.so'
+if os.name == 'nt':
+    mandelbrot_lib = ctypes.CDLL(PATH, winmode=0)
+else:
+    mandelbrot_lib = ctypes.CDLL(PATH)
 
 class MANDELBROT(ctypes.Structure):
     _fields_ = [("x_ini", ctypes.c_double),
