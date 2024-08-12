@@ -12,14 +12,7 @@ def ler_contador(filename):
     return data
 
 
-def exibir_fractal(contador):
-    root = tk.Tk()
-    root.title("Fractal de Mandelbrot")
-
-    canvas = Canvas(root, width=TAM_GRID, height=TAM_GRID)
-    canvas.pack()
-
-    img = PhotoImage(width=TAM_GRID, height=TAM_GRID)
+def exibir_fractal(canvas, img, contador):
     min_val, max_val = contador.min(), contador.max()
     for y in range(TAM_GRID):
         for x in range(TAM_GRID):
@@ -29,8 +22,21 @@ def exibir_fractal(contador):
     
     canvas.create_image((TAM_GRID//2, TAM_GRID//2), image=img, state="normal")
 
+
+def main():
+    contador = ler_contador("mandelbrot.bin")
+    
+    root = tk.Tk()
+    root.title("Fractal de Mandelbrot")
+
+    canvas = Canvas(root, width=TAM_GRID, height=TAM_GRID)
+    canvas.pack()
+    img = PhotoImage(width=TAM_GRID, height=TAM_GRID)
+
+    exibir_fractal(canvas, img, contador)
+
     root.mainloop()
 
 
-contador = ler_contador("mandelbrot.bin")
-exibir_fractal(contador)
+if __name__ == '__main__':
+    main()
