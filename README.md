@@ -71,13 +71,13 @@ python main.py
 ### Execução alterando o zoom da imagem
 Para alterar o zoom da imagem resultante, alterar as seguintes variáveis na função inicializa() do arquivo mandelbrot.c,
 
-De:
+De valores padrões que ja estavam na função:
 ```
     M->x_ini = -2;
     M->y_ini = +2;
     M->passo = 4;
 ```
-Para:
+Para valores escolhidos aleatoriamente como por exemplo:
 ```
     M->x_ini = -0.3787675;
     M->y_ini = +0.6212361;
