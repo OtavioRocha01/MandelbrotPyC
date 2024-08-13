@@ -15,8 +15,6 @@ Repositório composto pelos seguintes arquivos:
 - **Arquivos extras**: Arquivos de utilidade para o projeto.
   - **`.gitignore`**: Arquivo de configuração que especifica quais arquivos e diretórios devem ser ignorados pelo Git.
   - **`makefile`**: Arquivo de automação de compilação.
-  - **`mandelbrot.h`**: Cabeçalhos e definições para a geração do fractal.
-  - **`utils.h`/`utils.c`**: Arquivos com funções úteis para a execução dos cálculos necessários.
 
 ## Linux
 
