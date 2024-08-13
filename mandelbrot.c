@@ -9,6 +9,8 @@
 #define MAT2X(j) ((j) * (TAM_BLOCO) - 1.0)
 #define MAT2Y(i) (1.0 - (i) * (TAM_BLOCO))
 
+
+// Estrutura que representa o conjunto de Mandelbrot
 typedef struct mandelbrot_set{
     double x_ini;
     double y_ini;
@@ -19,6 +21,7 @@ typedef struct mandelbrot_set{
     int cor, coord;
 }MANDELBROT;
 
+// Inicializa a estrutura do conjunto de Mandelbrot
 MANDELBROT* inicializa() {
     MANDELBROT* M = (MANDELBROT*) malloc(sizeof(MANDELBROT));
     if ( M != NULL ) {
@@ -33,6 +36,7 @@ MANDELBROT* inicializa() {
     return M;
 }
 
+// Calcula o conjunto de Mandelbrot
 void calcula(MANDELBROT* M) {
     int x, y, iter;
     double py, px;
