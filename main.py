@@ -9,7 +9,7 @@ TAM_GRID = 500
 # Carregando a biblioteca
 # Testa o sistema operacional para o uso da flag
 if os.name == 'nt':
-    PATH = './mandelbrot.dll'
+    PATH = os.path.abspath('./mandelbrot.dll')
     mandelbrot_lib = ctypes.CDLL(PATH, winmode=0)
 else:
     PATH = './mandelbrot.so'
