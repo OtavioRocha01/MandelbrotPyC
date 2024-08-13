@@ -1,13 +1,12 @@
-# Nome do executável gerado
-SO_NAME=mandelbrot.so
-
 # Arquivos fonte
 SOURCES=mandelbrot.c
 
 # Detectando o sistema operacional
 ifeq ($(OS),Windows_NT)
+	SO_NAME=mandelbrot.dll
     PYTHON=python
 else
+	SO_NAME=mandelbrot.so
     PYTHON=python3
 endif
 
