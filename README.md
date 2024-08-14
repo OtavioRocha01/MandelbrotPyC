@@ -19,7 +19,7 @@ Repositório composto pelos seguintes arquivos:
 ## Linux :penguin:
 
 ### Requisitos
-Antes de executar o projeto, é essencial garantir que os seguintes pacotes estejam instalados: gcc, make, python3, tkinter e pillow. Se algum desses pacotes ainda não estiver instalado, siga os comandos abaixo para realizá-lo:
+Antes de executar o projeto, é essencial garantir que os seguintes pacotes estejam instalados: gcc, make, python3, tkinter e numpy. Se algum desses pacotes ainda não estiver instalado, siga os comandos abaixo para realizá-lo:
 ```
 sudo apt update
 sudo apt-get install gcc
@@ -37,7 +37,7 @@ make
 Alternativamente, você pode compilar e executar manualmente com os seguintes comandos:
 ```
 gcc -fPIC -shared -o mandelbrot.so mandelbrot.c
-python3 interface.py
+python3 main.py
 ```
 
 ## Windows :computer:

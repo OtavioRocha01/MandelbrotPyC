@@ -80,7 +80,6 @@ def main():
     # Definindo os tipos de retorno e argumentos das funções
     mandelbrot_lib.inicializa.restype = ctypes.POINTER(MANDELBROT)
     mandelbrot_lib.calcula.restype = ctypes.POINTER(MANDELBROT)
-    mandelbrot_lib.zoom.restype = ctypes.POINTER(MANDELBROT)
     
     # Inicializa a estrutura
     M = mandelbrot_lib.inicializa()
