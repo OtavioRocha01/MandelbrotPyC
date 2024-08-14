@@ -36,20 +36,6 @@ def exibir_fractal(canvas, img, contador):
     for y in range(TAM_GRID):
         for x in range(TAM_GRID):
             # Normaliza
-            color_val = int(255 * (contador[y][x] - min_val) / (max_val - min_val))
-            
-            # Formatação para hexadecimal
-            color = f"#{color_val:02x}{color_val:02x}{color_val:02x}"
-            img.put(color, (x, y))
-    
-    canvas.create_image((TAM_GRID//2, TAM_GRID//2), image=img, state="normal")
-
-
-def exibir_fractal_cg(canvas, img, contador):
-    min_val, max_val = contador.min(), contador.max()
-    for y in range(TAM_GRID):
-        for x in range(TAM_GRID):
-            # Normaliza
             color_val = int(128 * (contador[y][x] - min_val) / (max_val - min_val))
             
             # Criando um gradiente de cores
